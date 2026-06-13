@@ -75,37 +75,40 @@ const contactForm = document.querySelector("#contact-form");
 const formStatus = document.querySelector("#form-status");
 
 if (contactForm) {
-  contactForm.addEventListener("submit", (event) => {
+  contactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
+    
+    // Provide immediate feedback
+    formStatus.textContent = "Sending message...";
+    formStatus.style.color = "var(--teal)";
 
     const formData = new FormData(contactForm);
-    const name = String(formData.get("name") ?? "").trim();
-    const email = String(formData.get("email") ?? "").trim();
-    const message = String(formData.get("message") ?? "").trim();
-    const subject = encodeURIComponent(`Portfolio enquiry from ${name}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
-    );
+    // Add your Web3Forms Access Key here
+    formData.append("access_key", "a7d1dd9a-4ac8-40ed-ab28-66a4e6150cd9"); 
 
-    const mailtoLink = `mailto:aftabmulani001@gmail.com?subject=${subject}&body=${body}`;
-    const mailWindow = window.open(mailtoLink, "_self");
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
 
-    // Clear the form inputs after submission.
-    contactForm.reset();
+      const data = await response.json();
 
-    if (formStatus) {
-      // Provide a clear status for users whose mail app opened in a new context.
-      formStatus.textContent = "Opening your email app. Message drafted successfully!";
-      formStatus.style.color = "var(--teal)";
-
-      if (!mailWindow) {
-        formStatus.textContent = "Please use the email link below if your mail app did not open.";
+      if (data.success) {
+        formStatus.textContent = "Message sent successfully! I will get back to you soon.";
+        contactForm.reset();
+      } else {
+        formStatus.textContent = "Something went wrong. Please try again.";
         formStatus.style.color = "var(--amber)";
       }
-
-      setTimeout(() => {
-        formStatus.textContent = "";
-      }, 5000);
+    } catch (error) {
+      formStatus.textContent = "Network error. Please try again later.";
+      formStatus.style.color = "var(--amber)";
     }
+
+    // Clear the message after 5 seconds
+    setTimeout(() => {
+      formStatus.textContent = "";
+    }, 5000);
   });
 }
