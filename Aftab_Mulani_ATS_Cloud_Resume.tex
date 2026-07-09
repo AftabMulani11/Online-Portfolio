@@ -1,0 +1,159 @@
+% =====================================================================
+%  AFTAB MULANI — Cloud / DevOps Résumé
+%  Portfolio-branded, single-column, ATS-friendly (selectable text,
+%  standard headings, no tables/columns/graphics). Engine: pdflatex.
+% =====================================================================
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[margin=0.5in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+% --- Portfolio-matched typography -----------------------------------
+% Montserrat = geometric, close to the site's "Space Grotesk" headings.
+% defaultfam makes Montserrat the default family document-wide, so plain
+% \bfseries / body text are already the branded sans (clean extraction).
+\usepackage[defaultfam,tabular,lining]{montserrat}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\input{glyphtounicode}
+
+% Guarantee copy/paste + ATS text extraction stays clean
+\pdfgentounicode=1
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\urlstyle{same}
+
+% --- Portfolio palette (print-safe, high-contrast) ------------------
+\definecolor{brandblue}{HTML}{0B6BB5}  % darker sky-blue for paper contrast
+\definecolor{brandink}{HTML}{111827}   % near-black body ink
+\definecolor{rulegray}{HTML}{9AA6B2}
+\color{brandink}
+
+% --- Section headings: accent color + thin brand rule ---------------
+% Headings are typed in capitals directly (avoids \uppercase eating the
+% following color token, and keeps text extraction 1:1).
+\titleformat{\section}
+  {\normalsize\bfseries\color{brandblue}}
+  {}{0pt}{}
+  [\vspace{1.5pt}{\color{brandblue!45}\titlerule[0.7pt]}]
+\titlespacing*{\section}{0pt}{7pt}{4pt}
+
+\setlist[itemize]{
+  leftmargin=1.15em,
+  itemsep=0.8pt,
+  topsep=1.5pt,
+  parsep=0pt,
+  partopsep=0pt,
+  label=\textcolor{brandblue}{\textbullet}
+}
+
+% Experience entry: Title | Employer .......... Dates  /  Location
+\newcommand{\entry}[4]{%
+  \textbf{#1} \textcolor{rulegray}{\textbar{}} #2 \hfill \textbf{#3}\\[-1pt]
+  \textit{\small #4}\par\vspace{1pt}%
+}
+
+% Project line: Name | tech stack
+\newcommand{\project}[2]{%
+  \textbf{#1} \textcolor{rulegray}{\textbar{}} \textit{#2}%
+}
+
+% Skill row: colored category label + list
+\newcommand{\skill}[2]{%
+  \textbf{\color{brandblue}#1:} #2\\[1pt]%
+}
+
+\hypersetup{
+  pdftitle={Aftab Mulani - Cloud Engineer Resume},
+  pdfauthor={Aftab Mulani},
+  pdfsubject={Cloud Engineering and DevOps},
+  pdfkeywords={AWS, Lambda, Docker, CI/CD, Jenkins, DevOps, Cloud, Python, Terraform}
+}
+
+\begin{document}
+\small
+
+% ===================== HEADER =====================
+\begin{center}
+  {\fontsize{20}{22}\selectfont\bfseries\color{brandblue}AFTAB FIROZ MULANI}\\[2pt]
+  {\normalsize\bfseries Cloud Engineer \textcolor{rulegray}{\textbar{}} DevOps Engineer}\\[3pt]
+  {\small Pune, Maharashtra, India \textcolor{rulegray}{\textbar{}} +91 79722 81955 \textcolor{rulegray}{\textbar{}}
+  \href{mailto:aftabmulani001@gmail.com}{\textcolor{brandblue}{aftabmulani001@gmail.com}}}\\[1pt]
+  {\small \href{https://www.linkedin.com/in/aftabmulani11}{\textcolor{brandblue}{linkedin.com/in/aftabmulani11}}
+  \textcolor{rulegray}{\textbar{}}
+  \href{https://github.com/AftabMulani11}{\textcolor{brandblue}{github.com/AftabMulani11}}}
+\end{center}
+\vspace{2pt}
+
+% ===================== SUMMARY =====================
+\section{PROFESSIONAL SUMMARY}
+Cloud engineer working across AWS, Python, Docker, CI/CD, and serverless workflows, with project work spanning Lambda optimization, containerized services, asynchronous messaging, and automated AWS delivery. Brings 2+ years of enterprise production support, SLA-driven incident resolution, access governance, and compliance-aware operations across high-availability environments.
+
+% ===================== SKILLS =====================
+\section{TECHNICAL SKILLS}
+\skill{Cloud Platforms}{AWS Lambda, SQS, SES, ECR, S3, Elastic Beanstalk, IAM, CloudWatch}
+\skill{Containers and CI/CD}{Docker, Docker Compose, Jenkins, SonarCloud, Git, GitHub}
+\skill{Programming and Automation}{Python, FastAPI, Flask, SQL, REST APIs, Selenium, Linux, Bash, SSH}
+\skill{Cloud Operations}{production troubleshooting, incident response, SLA management, access governance, audit support}
+
+% ===================== PROJECTS =====================
+\section{CLOUD AND DEVOPS PROJECTS}
+\project{Lambda Benchmark Dashboard}{Python, FastAPI, AWS Lambda}
+\begin{itemize}
+  \item Built an AWS Lambda benchmarking dashboard automating comparison across 6 memory configurations (128MB--3008MB) and 3 endpoint profiles, measuring cold starts, latency, and cost per million requests.
+  \item Surfaced the optimal memory tier through 8 interactive dashboard views with results streamed live over Server-Sent Events, converting raw benchmarks into actionable cost-optimization recommendations.
+\end{itemize}
+
+\project{GreenStay}{AWS Lambda, SQS, SES, Flask, React, Docker}
+\begin{itemize}
+  \item Designed and containerized a hotel operations platform exposing 9 REST endpoints (Flask/React), with an asynchronous 3-stage SQS, Lambda, and SES pipeline that decoupled email delivery from the request path.
+  \item Split the system into 4 independent services (web, API, worker, notification) and shipped a 4-stage Jenkins pipeline, modeling production-style, fault-tolerant cloud architecture.
+\end{itemize}
+
+\project{CryptoFolio}{Jenkins, Docker, SonarCloud, AWS ECR, Elastic Beanstalk, S3}
+\begin{itemize}
+  \item Developed a secure Flask/React portfolio platform serving 13 JWT-authenticated REST APIs, backed by 8 automated test suites and Dockerized services.
+  \item Automated a 6-stage Jenkins pipeline (tests, SonarCloud quality gate, image build, ECR publish, and Elastic Beanstalk/S3 deploy), delivering end-to-end CI/CD from a single commit.
+\end{itemize}
+
+\project{SAARUSH 2.0}{Python, Speech Recognition, Computer Vision}
+\begin{itemize}
+  \item Built a voice-driven automation assistant supporting 12+ hands-free commands (web search, email, system info, media) gated by OpenCV face authentication, with speech-to-text and text-to-speech.
+\end{itemize}
+
+% ===================== EXPERIENCE =====================
+\section{PROFESSIONAL EXPERIENCE}
+\entry{Package Application Developer Associate}{Accenture}{Apr 2024 -- Present}{Pune, India}
+\begin{itemize}
+  \item Supported 80+ production, staging, development, and quality environments while managing access for 150+ users per quarter and maintaining compliance with enterprise security policies.
+  \item Resolved 90+ production incidents per quarter with 96\% SLA adherence, coordinating triage and escalation across cross-functional teams.
+  \item Prepared audit evidence for 2+ compliance reviews and led shift operations covering work allocation, incident awareness, stakeholder updates, and operational handoffs.
+\end{itemize}
+
+\entry{Tech Lead (Student) Intern}{JALA Academy}{Dec 2022 -- Sep 2023}{Remote}
+\begin{itemize}
+  \item Completed cloud, DevOps, QA automation, and Python assignments using AWS, Docker, Jenkins, Selenium, Linux, and core cloud deployment concepts.
+  \item Mentored peers, monitored learning progress, and coordinated team projects and technical presentations.
+\end{itemize}
+
+\entry{Python Developer Intern}{Sagveek Technologies}{May 2019 -- Jun 2019}{Pune, India}
+\begin{itemize}
+  \item Delivered assigned Python development tasks on schedule, writing and testing scripts and reporting progress to the team lead.
+\end{itemize}
+
+% ===================== EDUCATION =====================
+\section{EDUCATION \& CERTIFICATIONS}
+\textbf{B.Tech, Cloud Technology and Information Security}, Ajeenkya D Y Patil University \hfill 2020 -- 2023\\
+CGPA: 8.81/10 \textcolor{rulegray}{\textbar{}} Cloud Computing, Cloud Security, Linux, Network Security, Cryptography\\[2pt]
+\textbf{Diploma, Computer Science}, AISSMS Polytechnic \hfill 2017 -- 2020 \textcolor{rulegray}{\textbar{}} 85.31\%\\[2pt]
+\textbf{\color{brandblue}Certifications and Training:} Cloud Computing with AWS (2024) \textcolor{rulegray}{\textbar{}} Postman API Fundamentals Student Expert (2023)\\[2pt]
+\textbf{\color{brandblue}Project Portfolio:} Source code available at \href{https://github.com/AftabMulani11}{\textcolor{brandblue}{github.com/AftabMulani11}}.
+
+\end{document}

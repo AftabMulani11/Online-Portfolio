@@ -1,317 +1,616 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Aftab Mulani portfolio focused on cloud engineering, DevOps, cloud security, and enterprise access governance.">
-  <title>Aftab Mulani | Cloud Security Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aftab Mulani — Cloud & DevOps Engineer</title>
+  <meta name="description" content="Aftab Mulani — Cloud & DevOps Engineer. AWS serverless, Docker, CI/CD and cloud automation. Building project-proven cloud solutions, transitioning enterprise reliability into the cloud." />
+
+  <!-- Open Graph / social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Aftab Mulani — Cloud & DevOps Engineer" />
+  <meta property="og:description" content="AWS serverless · Docker · CI/CD · cloud automation. Project-proven cloud engineering from an enterprise reliability background." />
+  <meta property="og:image" content="assets/aftab-profile.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='none' stroke='%2338bdf8' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%237dd3fc'/%3E%3C/svg%3E" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="dist/app.css" />
 </head>
-<body>
-  <header class="site-header">
-    <a class="brand" href="#hero" aria-label="Aftab Mulani home">
-      <span class="brand-mark">AM</span>
-      <span>Aftab Mulani</span>
-    </a>
-    <nav class="nav" aria-label="Primary navigation">
-      <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#vision">Vision</a>
-      <a href="#contact">Contact</a>
-    </nav>
+
+<body class="overflow-x-hidden" id="top">
+
+  <!-- Cinematic layers -->
+  <canvas id="cloud-canvas" class="fixed inset-0 -z-10 h-full w-full"></canvas>
+  <div class="cine-grain"></div>
+  <div class="cine-vignette"></div>
+
+  <!-- ============ HEADER ============ -->
+  <header id="site-header" class="fixed top-0 left-0 z-50 w-full transition-all duration-300">
+    <div class="shell flex h-[68px] items-center justify-between">
+      <a href="#top" class="group flex items-center gap-3" aria-label="Aftab Mulani — home">
+        <span class="relative flex h-2.5 w-2.5">
+          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-60"></span>
+          <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-sky-glow"></span>
+        </span>
+        <span class="flex flex-col leading-none">
+          <strong class="font-display text-[15px] font-700 tracking-wide text-white">Aftab Mulani</strong>
+          <span class="mt-0.5 font-mono text-[10px] uppercase tracking-[0.2em] text-sky-glow">Cloud · DevOps</span>
+        </span>
+      </a>
+
+      <nav id="nav" class="hidden items-center gap-1 lg:flex" aria-label="Primary">
+        <a href="#transition" class="nav-link">Transition</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#arsenal" class="nav-link">Arsenal</a>
+        <a href="#journey" class="nav-link">Journey</a>
+        <a href="#education" class="nav-link">Education</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="assets/Aftab-Mulani-Resume.pdf" download class="btn-ghost hidden px-4 py-2 text-xs sm:inline-flex">Résumé</a>
+        <button id="nav-toggle" class="flex h-10 w-10 flex-col items-center justify-center gap-[5px] rounded-lg border border-white/10 lg:hidden" aria-label="Menu" aria-expanded="false" aria-controls="mobile-nav">
+          <span class="h-[1.5px] w-4 bg-mist-300"></span>
+          <span class="h-[1.5px] w-4 bg-mist-300"></span>
+          <span class="h-[1.5px] w-4 bg-mist-300"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile nav -->
+    <div id="mobile-nav" class="hidden border-y border-white/5 bg-ink-900/95 px-6 py-4 backdrop-blur-xl lg:hidden">
+      <div class="flex flex-col gap-1">
+        <a href="#transition" class="nav-link">Transition</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#arsenal" class="nav-link">Arsenal</a>
+        <a href="#journey" class="nav-link">Journey</a>
+        <a href="#education" class="nav-link">Education</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+    </div>
   </header>
 
-  <main>
-    <section class="hero" id="hero" aria-label="Portfolio hero">
-      <div class="hero-media" aria-hidden="true"></div>
-      <div class="hero-overlay"></div>
-      <div class="hero-content">
-        <p class="eyebrow">SAP Security Analyst at Accenture - moving toward cloud</p>
-        <h1>Aftab Firoz Mulani</h1>
-        <p class="hero-lead">
-          I work in enterprise SAP Security today, and I am intentionally building my next step
-          toward cloud engineering, DevOps, and cloud security. I like work that connects access,
-          automation, infrastructure, and real production responsibility.
-        </p>
-        <div class="hero-actions" aria-label="Profile links">
-          <a class="button primary" href="#contact">Contact Me</a>
-          <a class="button secondary" href="assets/Aftab-Mulani-Resume.pdf" target="_blank" rel="noopener noreferrer">View Resume</a>
-          <a class="button ghost" href="https://github.com/AftabMulani11" target="_blank" rel="noopener noreferrer">GitHub</a>
-        </div>
-        <div class="hero-proof" aria-label="Highlights">
-          <div>
-            <strong>2024 - Present</strong>
-            <span>Enterprise SAP Security</span>
-          </div>
-          <div>
-            <strong>AWS + DevOps</strong>
-            <span>Docker, Jenkins, Lambda, IAM</span>
-          </div>
-          <div>
-            <strong>BTech</strong>
-            <span>Cloud Technology and Information Security</span>
-          </div>
-        </div>
-      </div>
-      <aside class="ops-panel" aria-label="Current career focus">
-        <div class="ops-header">
-          <span>Current Focus</span>
-          <strong>Cloud transition</strong>
-        </div>
-        <div class="pulse-line" aria-hidden="true">
-          <span></span>
-        </div>
-        <div class="ops-grid">
-          <div>
-            <span>IAM</span>
-            <strong>Active</strong>
-          </div>
-          <div>
-            <span>CI/CD</span>
-            <strong>Building</strong>
-          </div>
-          <div>
-            <span>AWS</span>
-            <strong>Focused</strong>
-          </div>
-          <div>
-            <span>Security</span>
-            <strong>Core</strong>
-          </div>
-        </div>
-        <p class="ops-note">
-          Bringing enterprise access-control discipline into AWS, DevOps, and secure infrastructure work.
-        </p>
-      </aside>
-    </section>
+  <main class="relative z-10">
 
-    <section class="section intro-section" id="about">
-      <div class="section-heading">
-        <p class="eyebrow">About Me</p>
-        <h2>A security background, a cloud direction, and a learner's mindset.</h2>
-      </div>
-      <div class="about-grid">
-        <article class="about-copy reveal">
-          <p>
-            I am currently working as a SAP Security Analyst at Accenture. The role has taught me
-            how important access, roles, documentation, audit discipline, and calm production
-            support are inside a large enterprise environment.
-          </p>
-          <p>
-            My degree is in Cloud Technology and Information Security, so cloud has been part of
-            my direction from the beginning. Now I am connecting that foundation with practical
-            projects in AWS, Linux, Docker, CI/CD, backend APIs, and secure deployment workflows.
-          </p>
-          <p>
-            Outside of work, I like building projects that show real progress: learning one layer at
-            a time, documenting what I learn, and turning theory into something I can deploy, test,
-            and explain clearly. I enjoy the mix of security thinking and hands-on engineering.
-          </p>
-        </article>
-        <div class="signal-panel reveal" aria-label="Professional signals">
-          <div class="signal-row">
-            <span>Location</span>
-            <strong>Pune, Maharashtra, India</strong>
+    <!-- ============ HERO ============ -->
+    <section class="relative flex min-h-screen items-center px-5 pt-28 pb-20">
+      <div class="shell grid grid-cols-1 items-center gap-14 lg:grid-cols-12">
+
+        <div class="lg:col-span-7">
+          <div class="eyebrow reveal mb-6">
+            <span class="h-1.5 w-1.5 animate-pulse-soft rounded-full bg-sky-glow"></span>
+            Available for Cloud &amp; DevOps roles
           </div>
-          <div class="signal-row">
-            <span>Target Roles</span>
-            <strong>Cloud Engineer, DevOps Engineer, Cloud Security Analyst</strong>
+
+          <h1 class="reveal font-display text-5xl font-700 leading-[1.05] tracking-tight text-white sm:text-6xl md:text-7xl">
+            <span class="text-gradient">Cloud that ships.</span><br />
+            Reliability that scales.
+          </h1>
+
+          <p class="reveal mt-7 max-w-xl text-base leading-relaxed text-mist-400 text-balance md:text-lg">
+            I'm <span class="text-mist-100">Aftab Mulani</span> — a Cloud &amp; DevOps Engineer building
+            project-proven solutions across <span class="text-sky-glow">AWS serverless</span>,
+            <span class="text-sky-glow">Docker</span>, and <span class="text-sky-glow">CI/CD</span>.
+            I bring enterprise-grade reliability discipline into modern cloud automation.
+          </p>
+
+          <div class="reveal mt-9 flex flex-wrap gap-4">
+            <a href="#projects" class="btn-primary">
+              Explore Projects
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6l6 6-6 6"/></svg>
+            </a>
+            <a href="assets/Aftab-Mulani-Resume.pdf" download class="btn-ghost">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1M12 4v12m0 0l-4-4m4 4l4-4"/></svg>
+              Download Résumé
+            </a>
           </div>
-          <div class="signal-row">
-            <span>Foundation</span>
-            <strong>AWS, IAM, Linux, Security, Automation</strong>
-          </div>
-          <div class="signal-row">
-            <span>How I Work</span>
-            <strong>Structured, curious, and focused on production-ready outcomes</strong>
+
+          <!-- Live stat strip -->
+          <div class="reveal mt-14 grid max-w-lg grid-cols-3 gap-6">
+            <div>
+              <div class="font-display text-3xl font-700 text-white">4+</div>
+              <div class="mt-1 font-mono text-[11px] uppercase tracking-widest text-mist-500">Cloud projects</div>
+            </div>
+            <div>
+              <div class="font-display text-3xl font-700 text-white">96%</div>
+              <div class="mt-1 font-mono text-[11px] uppercase tracking-widest text-mist-500">SLA adherence</div>
+            </div>
+            <div>
+              <div class="font-display text-3xl font-700 text-white">2+ yrs</div>
+              <div class="mt-1 font-mono text-[11px] uppercase tracking-widest text-mist-500">Enterprise ops</div>
+            </div>
           </div>
         </div>
+
+        <!-- Hero glass card: live deployment ticker -->
+        <div class="reveal lg:col-span-5">
+          <div class="glass glass-hover rounded-3xl p-6">
+            <div class="flex items-center justify-between border-b border-white/5 pb-4">
+              <div class="flex items-center gap-2">
+                <span class="h-2.5 w-2.5 rounded-full bg-sky-glow"></span>
+                <span class="font-mono text-xs text-mist-300">~/deploy.pipeline</span>
+              </div>
+              <span class="chip">live</span>
+            </div>
+            <div class="mt-4 space-y-2.5 font-mono text-[12px] leading-relaxed" id="deploy-log">
+              <div class="text-mist-400"><span class="text-sky-glow">➜</span> git push origin main</div>
+              <div class="text-mist-500">▸ actions runner: provisioning…</div>
+              <div class="text-mist-500">▸ docker build · ✓ image pushed → ECR</div>
+              <div class="text-mist-500">▸ sonarcloud · ✓ quality gate passed</div>
+              <div class="text-emerald-300/90">✓ deployed to AWS · 12.4s</div>
+            </div>
+            <div class="mt-5 grid grid-cols-3 gap-2 text-center">
+              <div class="rounded-lg border border-white/5 bg-white/[0.02] py-3">
+                <div class="font-mono text-sm text-sky-glow">λ</div>
+                <div class="mt-1 text-[10px] text-mist-500">Lambda</div>
+              </div>
+              <div class="rounded-lg border border-white/5 bg-white/[0.02] py-3">
+                <div class="font-mono text-sm text-sky-glow">⬢</div>
+                <div class="mt-1 text-[10px] text-mist-500">Docker</div>
+              </div>
+              <div class="rounded-lg border border-white/5 bg-white/[0.02] py-3">
+                <div class="font-mono text-sm text-sky-glow">↻</div>
+                <div class="mt-1 text-[10px] text-mist-500">CI/CD</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- scroll cue -->
+      <div class="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 md:flex">
+        <span class="font-mono text-[10px] uppercase tracking-[0.3em] text-mist-500">Scroll</span>
+        <span class="h-10 w-[1.5px] animate-pulse-soft bg-gradient-to-b from-sky-glow to-transparent"></span>
       </div>
     </section>
 
-    <section class="section muted" id="skills">
-      <div class="section-heading narrow">
-        <p class="eyebrow">Skills</p>
-        <h2>Tools I am building with, not percentages I am pretending to own.</h2>
-      </div>
-      <div class="skill-grid">
-        <article class="skill-card reveal">
-          <span class="skill-icon">01</span>
-          <h3>Cloud Platforms</h3>
-          <p>AWS, Azure, Google Cloud, EC2, ECR, IAM, Lambda, VPC, RDS, Route 53, EKS, CloudFront, CloudWatch.</p>
-          <div class="skill-tags" aria-label="Cloud focus areas"><span>AWS focused</span><span>Hands-on</span></div>
-        </article>
-        <article class="skill-card reveal">
-          <span class="skill-icon">02</span>
-          <h3>DevOps Tooling</h3>
-          <p>Docker, Kubernetes, Jenkins, Ansible, Terraform, Git, GitHub, CI/CD pipelines, environment configuration.</p>
-          <div class="skill-tags" aria-label="DevOps focus areas"><span>Automation</span><span>Deployment</span></div>
-        </article>
-        <article class="skill-card reveal">
-          <span class="skill-icon">03</span>
-          <h3>Security And IAM</h3>
-          <p>SAP Security, access governance, IAM concepts, least privilege, audit readiness, cloud security fundamentals.</p>
-          <div class="skill-tags" aria-label="Security focus areas"><span>Current role</span><span>Enterprise</span></div>
-        </article>
-        <article class="skill-card reveal">
-          <span class="skill-icon">04</span>
-          <h3>Engineering</h3>
-          <p>Python, Core Java, SQL, Flask APIs, React, Selenium, Rest Assured, Linux, Windows, technical documentation.</p>
-          <div class="skill-tags" aria-label="Engineering focus areas"><span>Projects</span><span>APIs</span></div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="projects">
-      <div class="section-heading">
-        <p class="eyebrow">Projects</p>
-        <h2>Project work mapped to real cloud engineering responsibilities.</h2>
-      </div>
-      <div class="project-switcher reveal" aria-label="Project focus controls">
-        <button class="project-tab active" type="button" data-project="crypto">CryptoFolio</button>
-        <button class="project-tab" type="button" data-project="greenstay">GreenStay</button>
-        <button class="project-tab" type="button" data-project="saarush">SAARUSH</button>
-      </div>
-      <div class="project-list">
-        <article class="project-card featured reveal active-project" data-project-card="crypto">
-          <div class="project-meta">
-            <span>Full Stack</span>
-            <span>DevOps</span>
-            <span>Security</span>
-          </div>
-          <h3>CryptoFolio - Secure Crypto Portfolio Platform</h3>
-          <p>
-            Built a React and Flask portfolio app with JWT authentication, live market data,
-            database operations, Excel exports, Dockerized services, Nginx configuration, Jenkins
-            pipeline assets, and backend test coverage.
+    <!-- ============ TRANSITION: SAP → CLOUD ============ -->
+    <section id="transition" class="relative px-5 py-28">
+      <div class="shell">
+        <div class="mx-auto mb-16 max-w-2xl text-center">
+          <span class="eyebrow reveal">The Transition</span>
+          <h2 class="reveal mt-4 font-display text-4xl font-700 tracking-tight text-white md:text-5xl">
+            From enterprise reliability<br class="hidden sm:block" /> to <span class="text-gradient">cloud engineering</span>
+          </h2>
+          <p class="reveal mx-auto mt-5 max-w-xl text-mist-400 text-balance">
+            Two years operating mission-critical enterprise systems taught me what production
+            really demands. I'm channeling that discipline into building cloud infrastructure.
           </p>
-          <ul>
-            <li>Designed API routes for authentication, profile, holdings, transactions, dashboard, live prices, and report export.</li>
-            <li>Used Docker and compose structure to model frontend, backend, and deployment concerns.</li>
-            <li>Added security configuration through environment-based secrets and token validation.</li>
-          </ul>
-        </article>
-        <article class="project-card reveal" data-project-card="greenstay">
-          <div class="project-meta">
-            <span>AWS</span>
-            <span>Serverless</span>
-            <span>Automation</span>
-          </div>
-          <h3>GreenStay - Sustainable Hotel Operations App</h3>
-          <p>
-            Created a hotel and guest workflow system with React, Flask, carbon-emission
-            calculations, CSV exports, email queueing, and an AWS Lambda function that processes
-            SQS messages and sends mail through SES.
-          </p>
-          <ul>
-            <li>Implemented hotel registration, guest check-in, check-out, portal views, and reporting endpoints.</li>
-            <li>Connected async notification flow across queue service, Lambda handler, and SES client.</li>
-            <li>Prepared Docker, Nginx, and Jenkins assets for deployable application structure.</li>
-          </ul>
-        </article>
-        <article class="project-card reveal" data-project-card="saarush">
-          <div class="project-meta">
-            <span>Python</span>
-            <span>AI</span>
-            <span>Automation</span>
-          </div>
-          <h3>SAARUSH - Digital Voice Assistant</h3>
-          <p>
-            Developed a Python voice assistant using PyAudio, speech recognition, Pyttsx3,
-            real-time audio processing, custom commands, and face-recognition concepts.
-          </p>
-          <ul>
-            <li>Built voice command flows for faster interaction and task automation.</li>
-            <li>Integrated speech-to-text and text-to-speech libraries for natural input and response.</li>
-            <li>Collaborated on performance and user-experience improvements.</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="section vision-section" id="vision">
-      <div class="vision-content reveal">
-        <p class="eyebrow">Career Vision</p>
-        <h2>From enterprise access governance to secure cloud operations.</h2>
-        <p>
-          My goal is to transition into cloud engineering and cloud security roles where I can
-          combine my SAP Security experience with hands-on AWS, DevOps, and automation skills.
-          I want to work on infrastructure that is observable, repeatable, cost-aware, and secure
-          by design.
-        </p>
-      </div>
-      <div class="roadmap reveal" aria-label="Career roadmap">
-        <div>
-          <span>Now</span>
-          <strong>Enterprise IAM and SAP Security operations</strong>
         </div>
-        <div>
-          <span>Building</span>
-          <strong>AWS deployments, CI/CD, containers, Terraform, Linux</strong>
+
+        <!-- Portrait centerpiece -->
+        <div class="reveal mb-16 flex justify-center">
+          <figure class="relative">
+            <!-- rotating glow rings -->
+            <div class="pointer-events-none absolute inset-0 -m-6 rounded-full">
+              <div class="absolute inset-0 animate-[spin_22s_linear_infinite] rounded-full border border-dashed border-sky-400/25"></div>
+              <div class="absolute inset-3 animate-[spin_16s_linear_infinite_reverse] rounded-full border border-sky-400/15"></div>
+            </div>
+            <!-- ambient glow -->
+            <div class="pointer-events-none absolute -inset-8 rounded-full bg-sky-400/10 blur-2xl"></div>
+            <!-- portrait -->
+            <div class="relative h-44 w-44 overflow-hidden rounded-full border border-sky-400/30 shadow-glow md:h-52 md:w-52">
+              <img src="assets/aftab-portrait-solid.png" alt="Aftab Mulani" class="h-full w-full object-cover object-top" width="208" height="208" loading="lazy" />
+              <div class="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-white/10"></div>
+            </div>
+            <figcaption class="mt-5 text-center">
+              <div class="font-display text-base font-600 text-white">Aftab Mulani</div>
+              <div class="mt-0.5 font-mono text-[11px] uppercase tracking-[0.2em] text-sky-glow">SAP → Cloud · in motion</div>
+            </figcaption>
+          </figure>
         </div>
-        <div>
-          <span>Next</span>
-          <strong>Cloud Engineer or Cloud Security Analyst role</strong>
+
+        <div class="relative grid grid-cols-1 items-stretch gap-6 md:grid-cols-[1fr_auto_1fr]">
+          <!-- FROM -->
+          <div class="reveal glass rounded-2xl p-7">
+            <div class="mb-4 flex items-center gap-3">
+              <span class="flex h-9 w-9 items-center justify-center rounded-lg border border-mist-500/30 bg-mist-500/10 font-mono text-xs text-mist-300">SAP</span>
+              <h3 class="font-display text-lg font-600 text-mist-100">Enterprise Ops · Accenture</h3>
+            </div>
+            <p class="mb-4 text-sm leading-relaxed text-mist-400">
+              Production support across 80+ environments — the reliability foundation I now build on.
+            </p>
+            <ul class="space-y-2 text-sm text-mist-400">
+              <li class="flex gap-2"><span class="text-mist-500">▹</span> 90+ incidents/quarter · 96% SLA adherence</li>
+              <li class="flex gap-2"><span class="text-mist-500">▹</span> Access governance for 150+ users/quarter</li>
+              <li class="flex gap-2"><span class="text-mist-500">▹</span> Audit evidence &amp; compliance reviews</li>
+            </ul>
+          </div>
+
+          <!-- bridge -->
+          <div class="reveal flex items-center justify-center py-4 md:py-0">
+            <div class="flex items-center gap-2 text-sky-glow md:flex-col">
+              <div class="hidden h-16 w-[1.5px] bg-gradient-to-b from-transparent via-sky-400 to-transparent md:block"></div>
+              <svg class="h-8 w-8 md:rotate-90" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6l6 6-6 6"/></svg>
+              <div class="hidden h-16 w-[1.5px] bg-gradient-to-b from-transparent via-sky-400 to-transparent md:block"></div>
+            </div>
+          </div>
+
+          <!-- TO -->
+          <div class="reveal glass glass-hover rounded-2xl border-sky-400/20 p-7">
+            <div class="mb-4 flex items-center gap-3">
+              <span class="flex h-9 w-9 items-center justify-center rounded-lg border border-sky-400/30 bg-sky-400/10 font-mono text-xs text-sky-glow">☁</span>
+              <h3 class="font-display text-lg font-600 text-white">Cloud &amp; DevOps Engineering</h3>
+            </div>
+            <p class="mb-4 text-sm leading-relaxed text-mist-300">
+              Turning that operational rigor into automated, resilient AWS infrastructure.
+            </p>
+            <ul class="space-y-2 text-sm text-mist-300">
+              <li class="flex gap-2"><span class="text-sky-glow">▹</span> Serverless: Lambda, SQS, SES, event-driven flows</li>
+              <li class="flex gap-2"><span class="text-sky-glow">▹</span> CI/CD: Jenkins → ECR → Elastic Beanstalk</li>
+              <li class="flex gap-2"><span class="text-sky-glow">▹</span> Containers, IaC mindset &amp; observability</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- transferable skills bridge -->
+        <div class="reveal mt-6 glass rounded-2xl p-6">
+          <p class="text-center text-sm text-mist-400">
+            <span class="font-mono text-xs uppercase tracking-widest text-sky-glow">What carries over →</span>
+            <span class="ml-2">SLA discipline · incident response · access governance · audit rigor · high-availability thinking — the exact instincts cloud reliability engineering rewards.</span>
+          </p>
         </div>
       </div>
     </section>
 
-    <section class="section contact-section" id="contact">
-      <div class="section-heading narrow">
-        <p class="eyebrow">Contact</p>
-        <h2>Have a cloud, DevOps, or security opportunity in mind? Send me a note.</h2>
-      </div>
-      <div class="contact-layout reveal">
-        <form class="contact-form" id="contact-form">
-          <label>
-            <span>Name</span>
-            <input type="text" name="name" placeholder="Your name" required>
-          </label>
-          <label>
-            <span>Email</span>
-            <input type="email" name="email" placeholder="you@example.com" required>
-          </label>
-          <label class="full">
-            <span>Query or description</span>
-            <textarea name="message" rows="6" placeholder="Tell me about the role, project, referral, or cloud opportunity." required></textarea>
-          </label>
-          <button class="button primary form-submit" type="submit">Submit Message</button>
-          <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-          <p style="font-size: 0.8rem; color: var(--muted); margin-top: 12px; grid-column: 1 / -1;">
-            <em>*Future Integration: This contact pipeline is being transitioned to a serverless architecture using AWS API Gateway, Lambda, and Amazon SES.</em>
+    <div class="shell"><div class="hairline"></div></div>
+
+    <!-- ============ PROJECTS ============ -->
+    <section id="projects" class="relative px-5 py-28">
+      <div class="shell">
+        <div class="mb-16 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
+          <div>
+            <span class="eyebrow reveal">Selected Work</span>
+            <h2 class="reveal mt-4 font-display text-4xl font-700 tracking-tight text-white md:text-5xl">Cloud Projects</h2>
+          </div>
+          <p class="reveal max-w-sm text-sm text-mist-400">
+            Project-proven work spanning serverless optimization, async architectures and end-to-end CI/CD.
           </p>
-        </form>
-        <div class="contact-grid">
-          <a class="contact-item" href="mailto:aftabmulani001@gmail.com">
-            <span>Email</span>
-            <strong>aftabmulani001@gmail.com</strong>
-          </a>
-          <a class="contact-item" href="tel:+917972281955">
-            <span>Phone</span>
-            <strong>+91 79722 81955</strong>
-          </a>
-          <a class="contact-item" href="https://www.linkedin.com/in/aftab-mulani/" target="_blank" rel="noopener noreferrer">
-            <span>LinkedIn</span>
-            <strong>linkedin.com/in/aftab-mulani</strong>
-          </a>
-          <a class="contact-item" href="https://github.com/AftabMulani11" target="_blank" rel="noopener noreferrer">
-            <span>GitHub</span>
-            <strong>github.com/AftabMulani11</strong>
-          </a>
         </div>
+
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2" id="project-grid">
+          <!-- Cards injected/authored below -->
+
+          <!-- LAMBDA -->
+          <article class="reveal group glass glass-hover flex flex-col overflow-hidden rounded-2xl">
+            <div class="relative flex h-40 items-center justify-center overflow-hidden border-b border-white/5 bg-ink-900/40">
+              <svg class="h-24 w-full px-8 text-sky-400" viewBox="0 0 200 70" fill="none">
+                <polyline points="10,58 45,50 80,38 115,26 150,16 190,10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <polygon points="10,58 45,50 80,38 115,26 150,16 190,10 190,60 10,60" fill="url(#g1)" opacity="0.2"/>
+                <defs><linearGradient id="g1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#38bdf8"/><stop offset="1" stop-color="transparent"/></linearGradient></defs>
+              </svg>
+              <span class="absolute right-4 top-4 chip">FastAPI · SSE</span>
+            </div>
+            <div class="flex flex-1 flex-col p-6">
+              <div class="mb-2 flex items-center gap-2 font-mono text-[11px] text-mist-500">lambda_benchmark_dashboard</div>
+              <h3 class="font-display text-xl font-600 text-white">Lambda Benchmark Dashboard</h3>
+              <p class="mt-3 flex-1 text-sm leading-relaxed text-mist-400">
+                Automated comparison of AWS Lambda memory configs — cold starts, latency and estimated cost per million requests, streamed live via SSE.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="chip">Python</span><span class="chip">FastAPI</span><span class="chip">AWS Lambda</span><span class="chip">Chart.js</span>
+              </div>
+              <button class="btn-ghost mt-5 w-full text-xs" data-project="lambda">View architecture</button>
+            </div>
+          </article>
+
+          <!-- GREENSTAY -->
+          <article class="reveal group glass glass-hover flex flex-col overflow-hidden rounded-2xl">
+            <div class="relative flex h-40 items-center justify-center overflow-hidden border-b border-white/5 bg-ink-900/40">
+              <svg class="h-20 px-8 text-sky-400" viewBox="0 0 220 60" fill="none">
+                <rect x="8" y="20" width="34" height="20" rx="4" fill="#38bdf8" fill-opacity="0.12" stroke="#38bdf8" stroke-width="1.5"/>
+                <text x="25" y="33" font-family="JetBrains Mono" font-size="9" fill="#7dd3fc" text-anchor="middle">SQS</text>
+                <path d="M46,30 h26" stroke="#7dd3fc" stroke-width="1.5" stroke-dasharray="4,4"/>
+                <polygon points="90,18 108,42 72,42" fill="#38bdf8" fill-opacity="0.12" stroke="#38bdf8" stroke-width="1.5"/>
+                <text x="90" y="38" font-family="JetBrains Mono" font-size="9" fill="#7dd3fc" text-anchor="middle">λ</text>
+                <path d="M112,30 h26" stroke="#7dd3fc" stroke-width="1.5" stroke-dasharray="4,4"/>
+                <rect x="140" y="20" width="34" height="20" rx="4" fill="#38bdf8" fill-opacity="0.12" stroke="#38bdf8" stroke-width="1.5"/>
+                <text x="157" y="33" font-family="JetBrains Mono" font-size="9" fill="#7dd3fc" text-anchor="middle">SES</text>
+              </svg>
+              <span class="absolute right-4 top-4 chip">Serverless</span>
+            </div>
+            <div class="flex flex-1 flex-col p-6">
+              <div class="mb-2 flex items-center gap-2 font-mono text-[11px] text-mist-500">greenstay</div>
+              <h3 class="font-display text-xl font-600 text-white">GreenStay</h3>
+              <p class="mt-3 flex-1 text-sm leading-relaxed text-mist-400">
+                Containerized hotel operations platform with async email processing — Lambda consumes SQS messages and dispatches through SES for decoupled, fault-tolerant notifications.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="chip">AWS Lambda</span><span class="chip">SQS</span><span class="chip">SES</span><span class="chip">Flask</span><span class="chip">React</span>
+              </div>
+              <button class="btn-ghost mt-5 w-full text-xs" data-project="greenstay">View architecture</button>
+            </div>
+          </article>
+
+          <!-- CRYPTOFOLIO -->
+          <article class="reveal group glass glass-hover flex flex-col overflow-hidden rounded-2xl">
+            <div class="relative flex h-40 items-center justify-center overflow-hidden border-b border-white/5 bg-ink-900/40">
+              <svg class="h-20 px-8 text-sky-400" viewBox="0 0 220 60" fill="none">
+                <circle cx="30" cy="30" r="12" fill="none" stroke="#38bdf8" stroke-width="1.5"/>
+                <text x="30" y="33" font-family="JetBrains Mono" font-size="8" fill="#7dd3fc" text-anchor="middle">git</text>
+                <path d="M45,30 h30" stroke="#7dd3fc" stroke-width="1.5" stroke-dasharray="4,4"/>
+                <rect x="78" y="18" width="30" height="24" rx="4" fill="#38bdf8" fill-opacity="0.12" stroke="#38bdf8" stroke-width="1.5"/>
+                <text x="93" y="33" font-family="JetBrains Mono" font-size="7" fill="#7dd3fc" text-anchor="middle">CI</text>
+                <path d="M110,30 h30" stroke="#7dd3fc" stroke-width="1.5" stroke-dasharray="4,4"/>
+                <circle cx="158" cy="30" r="12" fill="none" stroke="#38bdf8" stroke-width="1.5"/>
+                <text x="158" y="33" font-family="JetBrains Mono" font-size="7" fill="#7dd3fc" text-anchor="middle">AWS</text>
+              </svg>
+              <span class="absolute right-4 top-4 chip">CI/CD</span>
+            </div>
+            <div class="flex flex-1 flex-col p-6">
+              <div class="mb-2 flex items-center gap-2 font-mono text-[11px] text-mist-500">cryptofolio</div>
+              <h3 class="font-display text-xl font-600 text-white">CryptoFolio</h3>
+              <p class="mt-3 flex-1 text-sm leading-relaxed text-mist-400">
+                Secure Flask + React portfolio platform with JWT auth and a full Jenkins pipeline — tests, SonarCloud quality gates, image builds to ECR, and release via Elastic Beanstalk &amp; S3.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="chip">Jenkins</span><span class="chip">Docker</span><span class="chip">SonarCloud</span><span class="chip">AWS ECR</span><span class="chip">Beanstalk</span>
+              </div>
+              <button class="btn-ghost mt-5 w-full text-xs" data-project="cryptofolio">View architecture</button>
+            </div>
+          </article>
+
+          <!-- SAARUSH -->
+          <article class="reveal group glass glass-hover flex flex-col overflow-hidden rounded-2xl">
+            <div class="relative flex h-40 items-center justify-center overflow-hidden border-b border-white/5 bg-ink-900/40">
+              <svg class="h-16 px-8 text-sky-400" viewBox="0 0 220 50" fill="none">
+                <path d="M8,25 Q28,2 48,25 T88,25 T128,25 T168,25 T208,25" stroke="#38bdf8" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                <circle cx="108" cy="25" r="5" fill="#7dd3fc"/>
+              </svg>
+              <span class="absolute right-4 top-4 chip">AI · CV</span>
+            </div>
+            <div class="flex flex-1 flex-col p-6">
+              <div class="mb-2 flex items-center gap-2 font-mono text-[11px] text-mist-500">saarush_2.0</div>
+              <h3 class="font-display text-xl font-600 text-white">SAARUSH 2.0</h3>
+              <p class="mt-3 flex-1 text-sm leading-relaxed text-mist-400">
+                Voice-driven automation assistant with face authentication, speech-to-text, text-to-speech and computer vision for hands-free system workflows.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="chip">Python</span><span class="chip">Speech Recognition</span><span class="chip">Computer Vision</span>
+              </div>
+              <button class="btn-ghost mt-5 w-full text-xs" data-project="saarush">View architecture</button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="shell"><div class="hairline"></div></div>
+
+    <!-- ============ ARSENAL ============ -->
+    <section id="arsenal" class="relative px-5 py-28">
+      <div class="shell">
+        <div class="mb-16 text-center">
+          <span class="eyebrow reveal">Tech Arsenal</span>
+          <h2 class="reveal mt-4 font-display text-4xl font-700 tracking-tight text-white md:text-5xl">The stack I build with</h2>
+        </div>
+
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div class="reveal glass glass-hover rounded-2xl p-6">
+            <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-sky-400/20 bg-sky-400/10 text-sky-glow">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+            </div>
+            <h3 class="font-display text-base font-600 text-white">Cloud Platforms</h3>
+            <p class="mt-2 text-sm leading-relaxed text-mist-400">AWS Lambda, SQS, SES, ECR, S3, Elastic Beanstalk, IAM, CloudWatch</p>
+          </div>
+
+          <div class="reveal glass glass-hover rounded-2xl p-6">
+            <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-sky-400/20 bg-sky-400/10 text-sky-glow">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2 1 3 3 3h10c2 0 3-1 3-3V7M4 7l8-4 8 4M4 7l8 4 8-4"/></svg>
+            </div>
+            <h3 class="font-display text-base font-600 text-white">Containers &amp; CI/CD</h3>
+            <p class="mt-2 text-sm leading-relaxed text-mist-400">Docker, Docker Compose, Jenkins, SonarCloud, Git, GitHub Actions</p>
+          </div>
+
+          <div class="reveal glass glass-hover rounded-2xl p-6">
+            <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-sky-400/20 bg-sky-400/10 text-sky-glow">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+            </div>
+            <h3 class="font-display text-base font-600 text-white">Programming</h3>
+            <p class="mt-2 text-sm leading-relaxed text-mist-400">Python, FastAPI, Flask, SQL, REST APIs, Selenium, Bash, SSH</p>
+          </div>
+
+          <div class="reveal glass glass-hover rounded-2xl p-6">
+            <div class="mb-4 flex h-11 w-11 items-center justify-center rounded-xl border border-sky-400/20 bg-sky-400/10 text-sky-glow">
+              <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <h3 class="font-display text-base font-600 text-white">Cloud Operations</h3>
+            <p class="mt-2 text-sm leading-relaxed text-mist-400">Incident response, SLA management, access governance, audit support</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="shell"><div class="hairline"></div></div>
+
+    <!-- ============ JOURNEY (timeline) ============ -->
+    <section id="journey" class="relative px-5 py-28">
+      <div class="shell">
+        <div class="mb-16 text-center">
+          <span class="eyebrow reveal">Journey</span>
+          <h2 class="reveal mt-4 font-display text-4xl font-700 tracking-tight text-white md:text-5xl">Career Timeline</h2>
+        </div>
+
+        <div class="relative mx-auto max-w-3xl pl-8">
+          <div class="rail"></div>
+
+          <article class="reveal relative mb-8">
+            <span class="node"></span>
+            <div class="glass glass-hover rounded-2xl p-6">
+              <div class="mb-2 flex flex-wrap items-center justify-between gap-2">
+                <h3 class="font-display text-lg font-600 text-white">Package Application Developer Associate</h3>
+                <span class="chip">Apr 2024 – Present</span>
+              </div>
+              <p class="mb-3 font-mono text-xs text-sky-glow">Accenture · Pune, India</p>
+              <ul class="space-y-1.5 text-sm text-mist-400">
+                <li class="flex gap-2"><span class="text-sky-glow">▹</span> Supported 80+ production/staging/dev/QA environments; access for 150+ users per quarter with enterprise security compliance.</li>
+                <li class="flex gap-2"><span class="text-sky-glow">▹</span> Resolved 90+ production incidents per quarter at 96% SLA adherence across cross-functional triage.</li>
+                <li class="flex gap-2"><span class="text-sky-glow">▹</span> Prepared audit evidence for compliance reviews; led shift operations and operational handoffs.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="reveal relative mb-8">
+            <span class="node"></span>
+            <div class="glass glass-hover rounded-2xl p-6">
+              <div class="mb-2 flex flex-wrap items-center justify-between gap-2">
+                <h3 class="font-display text-lg font-600 text-white">Tech Lead (Student) Intern</h3>
+                <span class="chip">Dec 2022 – Sep 2023</span>
+              </div>
+              <p class="mb-3 font-mono text-xs text-sky-glow">JALA Academy · Remote</p>
+              <ul class="space-y-1.5 text-sm text-mist-400">
+                <li class="flex gap-2"><span class="text-sky-glow">▹</span> Completed cloud, DevOps, QA automation and Python work using AWS, Docker, Jenkins, Selenium and Linux.</li>
+                <li class="flex gap-2"><span class="text-sky-glow">▹</span> Mentored peers and coordinated team projects and technical presentations.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="reveal relative">
+            <span class="node"></span>
+            <div class="glass glass-hover rounded-2xl p-6">
+              <div class="mb-2 flex flex-wrap items-center justify-between gap-2">
+                <h3 class="font-display text-lg font-600 text-white">Python Developer Intern</h3>
+                <span class="chip">May 2019 – Jun 2019</span>
+              </div>
+              <p class="mb-3 font-mono text-xs text-sky-glow">Sagveek Technologies · Pune, India</p>
+              <ul class="space-y-1.5 text-sm text-mist-400">
+                <li class="flex gap-2"><span class="text-sky-glow">▹</span> Delivered Python development tasks on schedule, applying core programming and problem-solving practices.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="shell"><div class="hairline"></div></div>
+
+    <!-- ============ EDUCATION ============ -->
+    <section id="education" class="relative px-5 py-28">
+      <div class="shell">
+        <div class="mb-16 text-center">
+          <span class="eyebrow reveal">Foundations</span>
+          <h2 class="reveal mt-4 font-display text-4xl font-700 tracking-tight text-white md:text-5xl">Education &amp; Certifications</h2>
+        </div>
+
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <div class="reveal glass glass-hover rounded-2xl p-7">
+            <div class="mb-2 flex items-center justify-between">
+              <h3 class="font-display text-lg font-600 text-white">B.Tech — Cloud Technology &amp; Information Security</h3>
+              <span class="chip">2020 – 2023</span>
+            </div>
+            <p class="mb-3 font-mono text-xs text-sky-glow">Ajeenkya D Y Patil University · CGPA 8.81/10</p>
+            <p class="text-sm text-mist-400">Cloud Computing, Cloud Security, Linux, Network Security &amp; Cryptography.</p>
+          </div>
+
+          <div class="reveal glass glass-hover rounded-2xl p-7">
+            <div class="mb-2 flex items-center justify-between">
+              <h3 class="font-display text-lg font-600 text-white">Diploma — Computer Science</h3>
+              <span class="chip">2017 – 2020</span>
+            </div>
+            <p class="mb-3 font-mono text-xs text-sky-glow">AISSMS Polytechnic · 85.31%</p>
+            <p class="text-sm text-mist-400">Core computer science and programming foundations.</p>
+          </div>
+        </div>
+
+        <div class="reveal mt-6 glass rounded-2xl p-6">
+          <div class="flex flex-wrap items-center gap-3">
+            <span class="font-mono text-xs uppercase tracking-widest text-sky-glow">Certifications</span>
+            <span class="chip">Cloud Computing with AWS · 2024</span>
+            <span class="chip">Postman API Fundamentals Student Expert · 2023</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="shell"><div class="hairline"></div></div>
+
+    <!-- ============ CONTACT ============ -->
+    <section id="contact" class="relative px-5 py-28">
+      <div class="shell">
+        <div class="reveal glass relative overflow-hidden rounded-3xl p-10 text-center md:p-16">
+          <div class="pointer-events-none absolute -top-24 left-1/2 h-48 w-[36rem] -translate-x-1/2 rounded-full bg-sky-400/10 blur-3xl"></div>
+          <span class="eyebrow">Let's build</span>
+          <h2 class="mx-auto mt-4 max-w-2xl font-display text-4xl font-700 tracking-tight text-white md:text-5xl text-balance">
+            Ready to bring reliability to your cloud.
+          </h2>
+          <p class="mx-auto mt-5 max-w-lg text-mist-400 text-balance">
+            Based in Pune, India — open to Cloud Engineer, DevOps and Cloud Security roles.
+            Let's talk pipelines, serverless architecture and operational excellence.
+          </p>
+          <div class="mt-9 flex flex-wrap justify-center gap-4">
+            <a href="mailto:aftabmulani001@gmail.com" class="btn-primary">
+              <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              aftabmulani001@gmail.com
+            </a>
+            <a href="https://www.linkedin.com/in/aftabmulani11" target="_blank" rel="noopener" class="btn-ghost">LinkedIn</a>
+            <a href="https://github.com/AftabMulani11" target="_blank" rel="noopener" class="btn-ghost">GitHub</a>
+          </div>
+        </div>
+
+        <footer class="mt-10 flex flex-col items-center justify-between gap-3 font-mono text-xs text-mist-500 sm:flex-row">
+          <span>© 2026 Aftab Mulani · Cloud &amp; DevOps Engineering</span>
+          <span>Pune, India · +91 79722 81955</span>
+        </footer>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <span>Built for cloud transition roles.</span>
-    <span>&copy; <span id="year">2026</span> Aftab Mulani</span>
-  </footer>
+  <!-- ============ PROJECT MODAL ============ -->
+  <dialog id="modal" class="modal w-[min(680px,calc(100%-2rem))] rounded-2xl border border-white/10 bg-ink-800 p-0 text-mist-300 backdrop:backdrop-blur-sm">
+    <div class="flex items-center justify-between border-b border-white/5 px-6 py-4">
+      <div class="flex items-center gap-2">
+        <span class="h-3 w-3 rounded-full bg-rose-400/80"></span>
+        <span class="h-3 w-3 rounded-full bg-amber-300/80"></span>
+        <span class="h-3 w-3 rounded-full bg-emerald-400/80"></span>
+        <span id="modal-file" class="ml-3 font-mono text-xs text-mist-500"></span>
+      </div>
+      <button id="modal-close" class="rounded-md border border-white/10 px-3 py-1 font-mono text-xs text-mist-400 transition-colors hover:border-rose-400/50 hover:text-rose-300">close ✕</button>
+    </div>
+    <div class="max-h-[76vh] overflow-y-auto p-6 md:p-8">
+      <div class="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <h2 id="modal-title" class="font-display text-2xl font-700 text-white md:text-3xl"></h2>
+          <p id="modal-role" class="mt-1 font-mono text-[11px] uppercase tracking-[0.15em] text-sky-glow"></p>
+        </div>
+        <a id="modal-demo" href="#" target="_blank" rel="noopener" class="btn-primary hidden px-4 py-2 text-xs">
+          Live demo
+          <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M9 7h8v8"/></svg>
+        </a>
+        <span id="modal-demo-soon" class="chip hidden">Demo coming soon</span>
+      </div>
 
-  <script src="script.js"></script>
+      <p id="modal-summary" class="mt-4 text-sm leading-relaxed text-mist-300"></p>
+
+      <!-- metrics strip -->
+      <div id="modal-metrics" class="mt-5 grid grid-cols-3 gap-3"></div>
+
+      <div id="modal-tags" class="mt-5 flex flex-wrap gap-2"></div>
+
+      <!-- overview -->
+      <div class="mt-6 border-t border-white/5 pt-6">
+        <h3 class="mb-2 font-mono text-[10px] uppercase tracking-widest text-mist-500">Overview</h3>
+        <p id="modal-overview" class="text-sm leading-relaxed text-mist-400"></p>
+      </div>
+
+      <div class="mt-6 grid grid-cols-1 gap-6 border-t border-white/5 pt-6 md:grid-cols-2">
+        <div>
+          <h3 class="mb-3 font-mono text-[10px] uppercase tracking-widest text-mist-500">What I built</h3>
+          <ul id="modal-points" class="space-y-2 text-sm text-mist-400"></ul>
+        </div>
+        <div>
+          <h3 class="mb-3 font-mono text-[10px] uppercase tracking-widest text-mist-500">Why it matters</h3>
+          <p id="modal-takeaway" class="text-sm leading-relaxed text-mist-400"></p>
+          <h3 class="mb-2 mt-5 font-mono text-[10px] uppercase tracking-widest text-mist-500">Stack</h3>
+          <p id="modal-stack" class="font-mono text-xs leading-relaxed text-sky-glow/90"></p>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="js/main.js" defer></script>
 </body>
 </html>
