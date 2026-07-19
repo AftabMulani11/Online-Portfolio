@@ -99,6 +99,7 @@
       ],
       stack: "Python · FastAPI · Jinja2 · Boto3 · Vanilla JS · Chart.js",
       demo: null,
+      repo: "https://github.com/AftabMulani11/lambda-benchmark-dashboard",
     },
     greenstay: {
       file: "greenstay.md",
@@ -125,6 +126,7 @@
       ],
       stack: "React · Flask · Docker · AWS Lambda · SQS · SES · Nginx",
       demo: null,
+      repo: "https://github.com/AftabMulani11/greenstay",
     },
     cryptofolio: {
       file: "cryptofolio.md",
@@ -151,6 +153,7 @@
       ],
       stack: "React · Flask · Jenkins · Docker · SonarCloud · AWS ECR / Beanstalk / S3",
       demo: null,
+      repo: "https://github.com/AftabMulani11/cryptofolio",
     },
     saarush: {
       file: "saarush_2.0.md",
@@ -176,6 +179,61 @@
       ],
       stack: "Python · SpeechRecognition · PyAudio · Pyttsx3 · OpenCV",
       demo: null,
+      repo: "https://github.com/AftabMulani11/saarush-assistant",
+    },
+    terraform: {
+      file: "terraform_learning.md",
+      title: "AWS Infra — Terraform + Ansible",
+      role: "Infrastructure as Code · provisioning + configuration",
+      summary:
+        "A one-command AWS environment: terraform apply takes an empty account to a configured, SSH-ready EC2 instance — VPC, networking, security group and keypair provisioned in-flight, then configured by a roles-based Ansible playbook.",
+      overview:
+        "This project treats infrastructure the way application code should be treated: declarative, reviewable and reproducible. Ten Terraform resources across modular .tf files stand up a custom VPC with a public subnet, internet gateway, route table, security group and an EC2 instance resolved from a dynamic AMI lookup — no hardcoded image IDs. The SSH keypair is generated at apply time via tls_private_key: the public half goes to AWS, the private half lands in a gitignored .pem, so nothing secret ever enters version control. Ansible then takes over post-provision configuration with a roles-based playbook.",
+      tags: ["Terraform", "Ansible", "AWS VPC", "EC2", "IAM", "HCL"],
+      points: [
+        "Provisioned 10 Terraform resources across modular files: VPC, subnet, IGW, route table, security group and EC2.",
+        "Dynamic AMI data source — always launches a current image with no hardcoded IDs.",
+        "Generated RSA-4096 SSH keys inside Terraform; private key stays local and gitignored.",
+        "Configured the instance post-provision with a roles-based Ansible playbook and inventory.",
+        "Empty AWS account to SSH-able, configured instance in roughly one minute.",
+      ],
+      takeaway:
+        "Demonstrates the provision-then-configure IaC workflow — Terraform for infrastructure, Ansible for state — with a clean secret-handling pattern that keeps the repo history verifiably free of credentials.",
+      metrics: [
+        { k: "10", v: "tf resources" },
+        { k: "1 cmd", v: "to SSH-ready" },
+        { k: "0", v: "secrets in git" },
+      ],
+      stack: "Terraform · Ansible · AWS VPC / EC2 · tls_private_key",
+      demo: null,
+      repo: "https://github.com/AftabMulani11/Terraform-Learning",
+    },
+    qa: {
+      file: "qa_automation_portfolio.md",
+      title: "QA Automation Portfolio",
+      role: "Test automation · JALA Academy tech-lead internship",
+      summary:
+        "Five Java test-automation projects consolidated in one repo — Selenium UI suites, a reusable Page Object framework, Cucumber BDD specs, REST Assured API tests and a full end-to-end booking flow.",
+      overview:
+        "Built during my Tech Lead (Student) internship at JALA Academy, this repo covers the full QA spectrum rather than a single technique. It spans 17 Selenium test classes of real-world UI scenarios, a framework layer with a driver factory and Page Object Model, business-readable Cucumber BDD with Gherkin feature files, REST Assured API tests covering CRUD, token auth and JSON schema validation, and an end-to-end yoga-booking user journey. Each subfolder is a standalone Maven project.",
+      tags: ["Java", "Selenium", "Cucumber", "REST Assured", "TestNG", "Maven", "Page Object Model"],
+      points: [
+        "17 Selenium test classes covering real-world UI scenarios, waits, assertions and cross-page flows.",
+        "Reusable framework layer: base test, driver factory, wrapper utilities and Page Object Model.",
+        "Cucumber BDD with Gherkin feature specs and step definitions for business-readable tests.",
+        "REST Assured API suite: CRUD, token authentication, response and JSON schema validation.",
+        "End-to-end booking-flow automation modeling a complete user journey.",
+      ],
+      takeaway:
+        "Shows framework thinking — separating reusable test infrastructure from test cases — and multi-layer coverage (UI, API, BDD, E2E), the testing discipline that carries straight into CI/CD quality gates.",
+      metrics: [
+        { k: "5", v: "projects" },
+        { k: "17", v: "UI test classes" },
+        { k: "4", v: "test layers" },
+      ],
+      stack: "Java · Selenium · Cucumber · REST Assured · TestNG · Maven",
+      demo: null,
+      repo: "https://github.com/AftabMulani11/qa-automation-portfolio",
     },
   };
 
@@ -192,6 +250,7 @@
   const mStack = document.getElementById("modal-stack");
   const mDemo = document.getElementById("modal-demo");
   const mDemoSoon = document.getElementById("modal-demo-soon");
+  const mRepo = document.getElementById("modal-repo");
 
   document.querySelectorAll("[data-project]").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -205,6 +264,16 @@
       mTakeaway.textContent = p.takeaway;
       if (mStack) mStack.textContent = p.stack || "";
 
+      // repo link
+      if (mRepo) {
+        if (p.repo) {
+          mRepo.href = p.repo;
+          mRepo.classList.remove("hidden");
+        } else {
+          mRepo.classList.add("hidden");
+        }
+      }
+
       // demo link (present now, or "coming soon" placeholder for future)
       if (mDemo && mDemoSoon) {
         if (p.demo) {
@@ -213,7 +282,8 @@
           mDemoSoon.classList.add("hidden");
         } else {
           mDemo.classList.add("hidden");
-          mDemoSoon.classList.remove("hidden");
+          // with a repo link present, drop the "coming soon" chip noise
+          mDemoSoon.classList.toggle("hidden", !!p.repo);
         }
       }
 
