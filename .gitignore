@@ -1,3 +1,28 @@
-node_modules/
-dist/
+# Local project source (kept out of the deployed site)
+/all projects/*
+
+# Local marketing assets (not part of the site)
+/LinkedIn_Banner_Portfolio.png
+/LinkedIn_Profile_Aftab_Mulani.md
+
+# Secrets
+.env
+
+# Dependencies
+/node_modules/
+
+# Tooling / editor
+/.claude/
+
+# Build temp
+/build-resume/
+*.aux
+*.out
 *.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# NOTE: dist/app.css is intentionally committed so GitHub Pages
+# serves the built stylesheet even before the Actions build runs.

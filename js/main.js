@@ -507,19 +507,24 @@
     // pause when tab hidden
     document.addEventListener("visibilitychange", () => {
       running = !document.hidden;
-      if (running) loop();
+      if (running) {
+        last = performance.now(); // don't count hidden time as a frame delta
+        loop();
+      }
     });
 
     let t = 0;
     let last = performance.now();
+    let rafId = null;
     const pos = geo.attributes.position.array;
     const tmp = new THREE.Vector3();
     const qDelta = new THREE.Quaternion();
     const MOUSE_RADIUS = 9; // world units of hover/repulsion influence
 
     const loop = () => {
-      if (!running) return;
-      requestAnimationFrame(loop);
+      if (!running) { rafId = null; return; }
+      if (rafId !== null) cancelAnimationFrame(rafId); // never run two chains
+      rafId = requestAnimationFrame(loop);
 
       // delta time (seconds), clamped so tab-switches don't jolt the scene
       const now = performance.now();

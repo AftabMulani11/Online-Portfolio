@@ -12,12 +12,16 @@ Personal portfolio website — **Cloud & DevOps Engineer**.
 
 ## Tech
 
-- HTML / CSS / JavaScript
-- Node-based build (see `package.json`)
+- HTML / vanilla JavaScript / Three.js background
+- Tailwind CSS (built to `dist/app.css`)
+- LaTeX résumé source, compiled via `tools/build_resume.sh`
 
 ## Run locally
 
 ```bash
 npm install
-npm run dev
+npm run build:css   # build the stylesheet
+npm run serve       # serve the site at http://localhost:4321
 ```
+
+`npm run watch` rebuilds the CSS on change while developing.
