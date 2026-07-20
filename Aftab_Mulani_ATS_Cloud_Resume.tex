@@ -130,7 +130,8 @@ Cloud and DevOps engineer building on 2+ years of enterprise SAP production supp
 
 \project{AWS Infrastructure with Terraform and Ansible}{Terraform, Ansible, AWS VPC, EC2}
 \begin{itemize}
-  \item Provisioned 10 Terraform resources (VPC, subnet, internet gateway, route table, security group, EC2 with dynamic AMI lookup) to an SSH-ready instance in one \textit{terraform apply}, generating RSA-4096 keys in-flight so no secrets enter version control; configured the host with a roles-based Ansible playbook.
+  \item Provisioned a complete AWS environment --- VPC, subnet, internet gateway, route table, security group, and EC2 --- as 10 Terraform resources, reaching an SSH-ready instance from a single \textit{terraform apply}.
+  \item Resolved AMIs via a Terraform data source instead of hardcoded IDs, generated RSA-4096 keys at apply time so no secrets enter version control, and configured the host with a roles-based Ansible playbook.
 \end{itemize}
 
 % ===================== EXPERIENCE =====================
