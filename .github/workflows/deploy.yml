@@ -41,6 +41,15 @@ jobs:
           mkdir -p _site
           cp index.html _site/
           cp -r dist js assets _site/
+          # Redirect for the old project-site path (pre-rename links in the wild)
+          mkdir -p _site/Online-Portfolio
+          cat > _site/Online-Portfolio/index.html <<'HTML'
+          <!DOCTYPE html><html><head><meta charset="utf-8">
+          <meta http-equiv="refresh" content="0; url=https://aftabmulani11.github.io/">
+          <link rel="canonical" href="https://aftabmulani11.github.io/">
+          <title>Moved</title></head>
+          <body>This page has moved to <a href="https://aftabmulani11.github.io/">aftabmulani11.github.io</a>.</body></html>
+          HTML
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
