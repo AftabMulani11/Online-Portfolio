@@ -98,7 +98,7 @@
         { k: "live", v: "SSE streaming" },
       ],
       stack: "Python · FastAPI · Jinja2 · Boto3 · Vanilla JS · Chart.js",
-      demo: null,
+      demo: "https://aftabmulani11.github.io/lambda-benchmark-dashboard/",
       repo: "https://github.com/AftabMulani11/lambda-benchmark-dashboard",
     },
     greenstay: {
@@ -125,7 +125,7 @@
         { k: "docker", v: "multi-container" },
       ],
       stack: "React · Flask · Docker · AWS Lambda · SQS · SES · Nginx",
-      demo: null,
+      demo: "https://aftabmulani11.github.io/greenstay/",
       repo: "https://github.com/AftabMulani11/greenstay",
     },
     cryptofolio: {
@@ -152,7 +152,7 @@
         { k: "ECR→EB", v: "auto release" },
       ],
       stack: "React · Flask · Jenkins · Docker · SonarCloud · AWS ECR / Beanstalk / S3",
-      demo: null,
+      demo: "https://aftabmulani11.github.io/cryptofolio/",
       repo: "https://github.com/AftabMulani11/cryptofolio",
     },
     saarush: {
