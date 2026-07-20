@@ -43,12 +43,12 @@
   {\normalsize\bfseries\color{brandblue}}
   {}{0pt}{}
   [\vspace{1.5pt}{\color{brandblue!45}\titlerule[0.7pt]}]
-\titlespacing*{\section}{0pt}{3.5pt}{2pt}
+\titlespacing*{\section}{0pt}{6pt}{3.5pt}
 
 \setlist[itemize]{
   leftmargin=1.15em,
-  itemsep=0.2pt,
-  topsep=0.8pt,
+  itemsep=0.6pt,
+  topsep=1.2pt,
   parsep=0pt,
   partopsep=0pt,
   label=\textcolor{brandblue}{\textbullet}
@@ -74,7 +74,7 @@
   pdftitle={Aftab Mulani - Cloud Engineer Resume},
   pdfauthor={Aftab Mulani},
   pdfsubject={Cloud Engineering and DevOps},
-  pdfkeywords={AWS, Lambda, Docker, CI/CD, Jenkins, DevOps, Cloud, Python, Terraform, Ansible, Selenium, GitHub Actions}
+  pdfkeywords={AWS, Lambda, Kubernetes, Docker, CI/CD, Jenkins, DevOps, SRE, Cloud, Python, Terraform, Ansible, Prometheus, Grafana}
 }
 
 \begin{document}
@@ -96,13 +96,13 @@
 
 % ===================== SUMMARY =====================
 \section{PROFESSIONAL SUMMARY}
-Cloud engineer working across AWS, Python, Docker, CI/CD, Terraform, and serverless workflows, with project work spanning Lambda optimization, containerized services, asynchronous messaging, infrastructure as code, and automated AWS delivery --- all published on GitHub with live demos. Brings 2+ years of enterprise production support, SLA-driven incident resolution, access governance, and compliance-aware operations across high-availability environments.
+Production support engineer transitioning into DevOps/CloudOps: 2+ years of SLA-driven incident response and access governance at Accenture, backed by hands-on AWS projects --- serverless, Kubernetes, Terraform, CI/CD --- published on GitHub with live demos.
 
 % ===================== SKILLS =====================
 \section{TECHNICAL SKILLS}
 \skill{Cloud Platforms}{AWS Lambda, SQS, SES, ECR, S3, Elastic Beanstalk, EC2, VPC, IAM, CloudWatch}
-\skill{Containers and CI/CD}{Docker, Docker Compose, Jenkins, GitHub Actions, SonarCloud, Git}
-\skill{IaC and Monitoring}{Terraform, Ansible; working exposure to Prometheus, Grafana}
+\skill{Containers and Orchestration}{Docker, Docker Compose, Kubernetes (Deployments, HPA, Ingress, kustomize)}
+\skill{CI/CD, IaC and Monitoring}{Jenkins, GitHub Actions, SonarCloud, Git, Terraform, Ansible, Prometheus, Grafana}
 \skill{Programming and Automation}{Python, FastAPI, Flask, SQL, REST APIs, Linux, Bash, SSH}
 \skill{Testing and QA}{Java, Selenium, Cucumber BDD, REST Assured, TestNG, Maven, Page Object Model}
 \skill{Cloud Operations}{production troubleshooting, incident response, SLA management, access governance, audit support}
@@ -111,20 +111,21 @@ Cloud engineer working across AWS, Python, Docker, CI/CD, Terraform, and serverl
 \section{CLOUD AND DEVOPS PROJECTS}
 \project{Lambda Benchmark Dashboard}{Python, FastAPI, AWS Lambda \textcolor{rulegray}{\textbar{}} \href{https://aftabmulani11.github.io/lambda-benchmark-dashboard/}{\textcolor{brandblue}{live demo}}}
 \begin{itemize}
-  \item Built an AWS Lambda benchmarking dashboard automating comparison across 6 memory configurations (128MB--3008MB) and 3 endpoint profiles, measuring cold starts, latency, and cost per million requests.
-  \item Surfaced the optimal memory tier through 8 interactive dashboard views with results streamed live over Server-Sent Events, converting raw benchmarks into actionable cost-optimization recommendations.
+  \item Benchmarked AWS Lambda across 6 memory configurations and 3 endpoint profiles (cold start, latency, cost per million requests), and identified a 512MB sweet spot: 78\% lower latency than the 128MB baseline at 8\% lower cost, and 49\% cheaper than the max-memory tier.
+  \item Streamed benchmark execution live to the browser over Server-Sent Events and converted raw duration matrices into a weighted cost-performance recommendation.
 \end{itemize}
 
-\project{GreenStay}{AWS Lambda, SQS, SES, Flask, React, Docker \textcolor{rulegray}{\textbar{}} \href{https://aftabmulani11.github.io/greenstay/}{\textcolor{brandblue}{live demo}}}
+\project{GreenStay}{AWS Lambda, SQS, SES, Kubernetes, Prometheus, Grafana \textcolor{rulegray}{\textbar{}} \href{https://aftabmulani11.github.io/greenstay/}{\textcolor{brandblue}{live demo}}}
 \begin{itemize}
-  \item Designed and containerized a hotel operations platform exposing 9 REST endpoints (Flask/React), with an asynchronous 3-stage SQS, Lambda, and SES pipeline that decoupled email delivery from the request path.
-  \item Split the system into 4 independent services (web, API, worker, notification) and shipped a 4-stage Jenkins pipeline, modeling production-style, fault-tolerant cloud architecture.
+  \item Designed and containerized a hotel operations platform (Flask/React, 9 REST endpoints) with an asynchronous SQS \(\to\) Lambda \(\to\) SES pipeline that decoupled email delivery from the request path.
+  \item Migrated all 4 services to Kubernetes: Deployments with health probes and resource limits, CPU-based autoscaling (HPA), Ingress routing, and secrets kept out of version control.
+  \item Instrumented the API with Prometheus metrics and shipped a provisioned Grafana dashboard tracking request rate, p95 latency, HTTP status mix, and pod availability.
 \end{itemize}
 
 \project{CryptoFolio}{Jenkins, Docker, SonarCloud, AWS ECR, Elastic Beanstalk, S3 \textcolor{rulegray}{\textbar{}} \href{https://aftabmulani11.github.io/cryptofolio/}{\textcolor{brandblue}{live demo}}}
 \begin{itemize}
   \item Developed a secure Flask/React portfolio platform serving 13 JWT-authenticated REST APIs, backed by 8 automated test suites and Dockerized services.
-  \item Automated a 6-stage Jenkins pipeline (tests, SonarCloud quality gate, image build, ECR publish, and Elastic Beanstalk/S3 deploy), delivering end-to-end CI/CD from a single commit.
+  \item Automated a 6-stage Jenkins pipeline (tests, SonarCloud quality gate, image build, ECR publish, Elastic Beanstalk/S3 deploy), delivering commit-to-cloud CI/CD with zero manual release steps.
 \end{itemize}
 
 \project{AWS Infrastructure with Terraform and Ansible}{Terraform, Ansible, AWS VPC, EC2}
@@ -132,29 +133,19 @@ Cloud engineer working across AWS, Python, Docker, CI/CD, Terraform, and serverl
   \item Provisioned 10 Terraform resources (VPC, subnet, internet gateway, route table, security group, EC2 with dynamic AMI lookup) to an SSH-ready instance in one \textit{terraform apply}, generating RSA-4096 keys in-flight so no secrets enter version control; configured the host with a roles-based Ansible playbook.
 \end{itemize}
 
-\project{SAARUSH 2.0}{Python, Speech Recognition, Computer Vision}
-\begin{itemize}
-  \item Built a voice-driven automation assistant supporting 12+ hands-free commands gated by OpenCV face authentication, with speech-to-text and text-to-speech.
-\end{itemize}
-
 % ===================== EXPERIENCE =====================
 \section{PROFESSIONAL EXPERIENCE}
 \entry{Package Application Developer Associate}{Accenture}{Apr 2024 -- Present}{Pune, India}
 \begin{itemize}
-  \item Supported 80+ production, staging, development, and quality environments while managing access for 150+ users per quarter and maintaining compliance with enterprise security policies.
-  \item Resolved 90+ production incidents per quarter with 96\% SLA adherence, coordinating triage and escalation across cross-functional teams.
-  \item Prepared audit evidence for 2+ compliance reviews and led shift operations covering work allocation, incident awareness, stakeholder updates, and operational handoffs.
+  \item Scripted the user-access provisioning workflow and automated recurring SLA/audit report assembly, cutting manual effort on those tasks by \(\sim\)30\% while managing access for 150+ users per quarter under enterprise security policy.
+  \item Resolved 90+ production incidents per quarter at 96\% SLA adherence across 80+ production, staging, development, and QA environments, coordinating triage and escalation with cross-functional teams.
+  \item Prepared audit evidence for compliance reviews and led shift operations: work allocation, incident awareness, stakeholder updates, and operational handoffs.
 \end{itemize}
 
-\entry{Tech Lead (Student) Intern}{JALA Academy}{Dec 2022 -- Sep 2023}{Remote}
+\entry{QA Automation Trainee (Tech Lead, Student Cohort)}{JALA Academy}{Dec 2022 -- Sep 2023}{Remote}
 \begin{itemize}
-  \item Built 5 Java test-automation projects (17 Selenium test classes, a reusable Page Object framework, Cucumber BDD suites, REST Assured API tests, and an end-to-end booking flow), published as a consolidated QA portfolio on GitHub.
-  \item Completed cloud, DevOps, and Python assignments using AWS, Docker, Jenkins, and Linux; mentored peers and coordinated team projects and technical presentations.
-\end{itemize}
-
-\entry{Python Developer Intern}{Sagveek Technologies}{May 2019 -- Jun 2019}{Pune, India}
-\begin{itemize}
-  \item Delivered assigned Python development tasks on schedule, writing and testing scripts and reporting progress to the team lead.
+  \item Built 5 Java test-automation projects --- 17 Selenium test classes, a reusable Page Object framework, Cucumber BDD suites, REST Assured API tests, and an end-to-end booking flow --- published as a consolidated QA portfolio on GitHub.
+  \item Completed cloud, DevOps, and Python assignments (AWS, Docker, Jenkins, Linux); mentored peers and coordinated team projects.
 \end{itemize}
 
 % ===================== EDUCATION =====================

@@ -109,13 +109,14 @@
         "A containerized hotel and guest operations platform built with Flask, React and Docker, using AWS Lambda, SQS and SES to process notifications asynchronously for scalable, decoupled service delivery.",
       overview:
         "GreenStay models how a real hospitality product runs in the cloud. The web app handles day-to-day hotel operations, but the interesting part is behind the scenes: instead of blocking a request to send guest emails, the API drops a message on an SQS queue. A Lambda consumer picks it up and dispatches through SES — so the front end stays fast and the notification path can fail, retry and scale on its own.",
-      tags: ["AWS Lambda", "SQS", "SES", "Flask", "React", "Docker", "Nginx", "Jenkins"],
+      tags: ["AWS Lambda", "SQS", "SES", "Kubernetes", "Prometheus", "Grafana", "Flask", "React", "Docker", "Jenkins"],
       points: [
         "Implemented hotel registration, guest check-in / check-out, portal views and reporting endpoints.",
         "Wired a fully async notification flow: API → SQS queue → Lambda handler → SES delivery.",
         "Added carbon-emission calculations and CSV exports for sustainability reporting.",
         "Separated web, API, worker and notification responsibilities for fault tolerance.",
-        "Prepared Docker, Nginx and Jenkins assets for a deployable, production-style stack.",
+        "Migrated all 4 services to Kubernetes — Deployments with health probes, CPU-based autoscaling (HPA), Ingress routing and kustomize.",
+        "Instrumented the API with Prometheus metrics and a provisioned Grafana dashboard (request rate, p95 latency, pod availability).",
       ],
       takeaway:
         "Models production-grade cloud architecture — event-driven, decoupled and resilient background processing that scales independently of the user-facing app.",
