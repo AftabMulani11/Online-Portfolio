@@ -5,7 +5,7 @@
 % =====================================================================
 \documentclass[10pt,a4paper]{article}
 
-\usepackage[top=0.42in,bottom=0.42in,left=0.5in,right=0.5in]{geometry}
+\usepackage[top=0.4in,bottom=0.4in,left=0.5in,right=0.5in]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 
@@ -43,12 +43,12 @@
   {\normalsize\bfseries\color{brandblue}}
   {}{0pt}{}
   [\vspace{1.5pt}{\color{brandblue!45}\titlerule[0.7pt]}]
-\titlespacing*{\section}{0pt}{5pt}{3pt}
+\titlespacing*{\section}{0pt}{3.5pt}{2pt}
 
 \setlist[itemize]{
   leftmargin=1.15em,
-  itemsep=0.4pt,
-  topsep=1pt,
+  itemsep=0.2pt,
+  topsep=0.8pt,
   parsep=0pt,
   partopsep=0pt,
   label=\textcolor{brandblue}{\textbullet}
@@ -74,7 +74,7 @@
   pdftitle={Aftab Mulani - Cloud Engineer Resume},
   pdfauthor={Aftab Mulani},
   pdfsubject={Cloud Engineering and DevOps},
-  pdfkeywords={AWS, Lambda, Docker, CI/CD, Jenkins, DevOps, Cloud, Python, Terraform, Ansible}
+  pdfkeywords={AWS, Lambda, Docker, CI/CD, Jenkins, DevOps, Cloud, Python, Terraform, Ansible, Selenium, GitHub Actions}
 }
 
 \begin{document}
@@ -88,45 +88,53 @@
   \href{mailto:aftabmulani010@gmail.com}{\textcolor{brandblue}{aftabmulani010@gmail.com}}}\\[1pt]
   {\small \href{https://www.linkedin.com/in/aftabmulani11}{\textcolor{brandblue}{linkedin.com/in/aftabmulani11}}
   \textcolor{rulegray}{\textbar{}}
-  \href{https://github.com/AftabMulani11}{\textcolor{brandblue}{github.com/AftabMulani11}}}
+  \href{https://github.com/AftabMulani11}{\textcolor{brandblue}{github.com/AftabMulani11}}
+  \textcolor{rulegray}{\textbar{}}
+  \href{https://aftabmulani11.github.io/Online-Portfolio/}{\textcolor{brandblue}{aftabmulani11.github.io/Online-Portfolio}}}
 \end{center}
 \vspace{2pt}
 
 % ===================== SUMMARY =====================
 \section{PROFESSIONAL SUMMARY}
-Cloud engineer working across AWS, Python, Docker, CI/CD, and serverless workflows, with project work spanning Lambda optimization, containerized services, asynchronous messaging, and automated AWS delivery. Brings 2+ years of enterprise production support, SLA-driven incident resolution, access governance, and compliance-aware operations across high-availability environments.
+Cloud engineer working across AWS, Python, Docker, CI/CD, Terraform, and serverless workflows, with project work spanning Lambda optimization, containerized services, asynchronous messaging, infrastructure as code, and automated AWS delivery --- all published on GitHub with live demos. Brings 2+ years of enterprise production support, SLA-driven incident resolution, access governance, and compliance-aware operations across high-availability environments.
 
 % ===================== SKILLS =====================
 \section{TECHNICAL SKILLS}
-\skill{Cloud Platforms}{AWS Lambda, SQS, SES, ECR, S3, Elastic Beanstalk, IAM, CloudWatch}
-\skill{Containers and CI/CD}{Docker, Docker Compose, Jenkins, SonarCloud, Git, GitHub}
+\skill{Cloud Platforms}{AWS Lambda, SQS, SES, ECR, S3, Elastic Beanstalk, EC2, VPC, IAM, CloudWatch}
+\skill{Containers and CI/CD}{Docker, Docker Compose, Jenkins, GitHub Actions, SonarCloud, Git}
 \skill{IaC and Monitoring}{Terraform, Ansible; working exposure to Prometheus, Grafana}
-\skill{Programming and Automation}{Python, FastAPI, Flask, SQL, REST APIs, Selenium, Linux, Bash, SSH}
+\skill{Programming and Automation}{Python, FastAPI, Flask, SQL, REST APIs, Linux, Bash, SSH}
+\skill{Testing and QA}{Java, Selenium, Cucumber BDD, REST Assured, TestNG, Maven, Page Object Model}
 \skill{Cloud Operations}{production troubleshooting, incident response, SLA management, access governance, audit support}
 
 % ===================== PROJECTS =====================
 \section{CLOUD AND DEVOPS PROJECTS}
-\project{Lambda Benchmark Dashboard}{Python, FastAPI, AWS Lambda}
+\project{Lambda Benchmark Dashboard}{Python, FastAPI, AWS Lambda \textcolor{rulegray}{\textbar{}} \href{https://aftabmulani11.github.io/lambda-benchmark-dashboard/}{\textcolor{brandblue}{live demo}}}
 \begin{itemize}
   \item Built an AWS Lambda benchmarking dashboard automating comparison across 6 memory configurations (128MB--3008MB) and 3 endpoint profiles, measuring cold starts, latency, and cost per million requests.
   \item Surfaced the optimal memory tier through 8 interactive dashboard views with results streamed live over Server-Sent Events, converting raw benchmarks into actionable cost-optimization recommendations.
 \end{itemize}
 
-\project{GreenStay}{AWS Lambda, SQS, SES, Flask, React, Docker}
+\project{GreenStay}{AWS Lambda, SQS, SES, Flask, React, Docker \textcolor{rulegray}{\textbar{}} \href{https://aftabmulani11.github.io/greenstay/}{\textcolor{brandblue}{live demo}}}
 \begin{itemize}
   \item Designed and containerized a hotel operations platform exposing 9 REST endpoints (Flask/React), with an asynchronous 3-stage SQS, Lambda, and SES pipeline that decoupled email delivery from the request path.
   \item Split the system into 4 independent services (web, API, worker, notification) and shipped a 4-stage Jenkins pipeline, modeling production-style, fault-tolerant cloud architecture.
 \end{itemize}
 
-\project{CryptoFolio}{Jenkins, Docker, SonarCloud, AWS ECR, Elastic Beanstalk, S3}
+\project{CryptoFolio}{Jenkins, Docker, SonarCloud, AWS ECR, Elastic Beanstalk, S3 \textcolor{rulegray}{\textbar{}} \href{https://aftabmulani11.github.io/cryptofolio/}{\textcolor{brandblue}{live demo}}}
 \begin{itemize}
   \item Developed a secure Flask/React portfolio platform serving 13 JWT-authenticated REST APIs, backed by 8 automated test suites and Dockerized services.
   \item Automated a 6-stage Jenkins pipeline (tests, SonarCloud quality gate, image build, ECR publish, and Elastic Beanstalk/S3 deploy), delivering end-to-end CI/CD from a single commit.
 \end{itemize}
 
+\project{AWS Infrastructure with Terraform and Ansible}{Terraform, Ansible, AWS VPC, EC2}
+\begin{itemize}
+  \item Provisioned 10 Terraform resources (VPC, subnet, internet gateway, route table, security group, EC2 with dynamic AMI lookup) to an SSH-ready instance in one \textit{terraform apply}, generating RSA-4096 keys in-flight so no secrets enter version control; configured the host with a roles-based Ansible playbook.
+\end{itemize}
+
 \project{SAARUSH 2.0}{Python, Speech Recognition, Computer Vision}
 \begin{itemize}
-  \item Built a voice-driven automation assistant supporting 12+ hands-free commands (web search, email, system info, media) gated by OpenCV face authentication, with speech-to-text and text-to-speech.
+  \item Built a voice-driven automation assistant supporting 12+ hands-free commands gated by OpenCV face authentication, with speech-to-text and text-to-speech.
 \end{itemize}
 
 % ===================== EXPERIENCE =====================
@@ -140,8 +148,8 @@ Cloud engineer working across AWS, Python, Docker, CI/CD, and serverless workflo
 
 \entry{Tech Lead (Student) Intern}{JALA Academy}{Dec 2022 -- Sep 2023}{Remote}
 \begin{itemize}
-  \item Completed cloud, DevOps, QA automation, and Python assignments using AWS, Docker, Jenkins, Selenium, and Linux; provisioned infrastructure with Terraform and Ansible, with working exposure to Prometheus and Grafana.
-  \item Mentored peers, monitored learning progress, and coordinated team projects and technical presentations.
+  \item Built 5 Java test-automation projects (17 Selenium test classes, a reusable Page Object framework, Cucumber BDD suites, REST Assured API tests, and an end-to-end booking flow), published as a consolidated QA portfolio on GitHub.
+  \item Completed cloud, DevOps, and Python assignments using AWS, Docker, Jenkins, and Linux; mentored peers and coordinated team projects and technical presentations.
 \end{itemize}
 
 \entry{Python Developer Intern}{Sagveek Technologies}{May 2019 -- Jun 2019}{Pune, India}
@@ -150,11 +158,10 @@ Cloud engineer working across AWS, Python, Docker, CI/CD, and serverless workflo
 \end{itemize}
 
 % ===================== EDUCATION =====================
-\section{EDUCATION \& CERTIFICATIONS}
+\section{EDUCATION}
 \textbf{B.Tech, Cloud Technology and Information Security}, Ajeenkya D Y Patil University \hfill 2020 -- 2023\\
-CGPA: 8.81/10 \textcolor{rulegray}{\textbar{}} Cloud Computing, Cloud Security, Linux, Network Security, Cryptography\\[2pt]
-\textbf{Diploma, Computer Science}, AISSMS Polytechnic \hfill 2017 -- 2020 \textcolor{rulegray}{\textbar{}} 85.31\%\\[2pt]
-\textbf{\color{brandblue}Certifications and Training:} Cloud Computing with AWS (2024) \textcolor{rulegray}{\textbar{}} Postman API Fundamentals Student Expert (2023)\\[2pt]
-\textbf{\color{brandblue}Project Portfolio:} Source code available at \href{https://github.com/AftabMulani11}{\textcolor{brandblue}{github.com/AftabMulani11}}.
+CGPA: 8.81/10 \textcolor{rulegray}{\textbar{}} Cloud Computing, Cloud Security, Linux, Network Security, Cryptography\\[1pt]
+\textbf{Diploma, Computer Science}, AISSMS Polytechnic \hfill 2017 -- 2020 \textcolor{rulegray}{\textbar{}} 85.31\%\\[1pt]
+\textbf{\color{brandblue}Project Portfolio:} Source code and live demos at \href{https://github.com/AftabMulani11}{\textcolor{brandblue}{github.com/AftabMulani11}} \textcolor{rulegray}{\textbar{}} \href{https://aftabmulani11.github.io/Online-Portfolio/}{\textcolor{brandblue}{aftabmulani11.github.io/Online-Portfolio}}
 
 \end{document}
