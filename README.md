@@ -2,7 +2,7 @@
 
 Personal portfolio website — **Cloud & DevOps Engineer**.
 
-🔗 **Live:** [aftabmulani11.github.io/Online-Portfolio](https://aftabmulani11.github.io/Online-Portfolio/)
+🔗 **Live:** [aftabmulani11.github.io](https://aftabmulani11.github.io/)
 
 ## Features
 
